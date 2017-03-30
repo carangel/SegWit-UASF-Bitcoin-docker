@@ -1,10 +1,10 @@
 Install a SegWit UASF Bitcoin node on your machine using Docker
 
-# Validate the UASF patch (optional)
+# Installation
+
+## 0. Validate the UASF patch (optional)
 Optional but recommended if you have development skills.  
 You can check the patch at this page:  https://github.com/bitcoin/bitcoin/compare/0.14...UASF:0.14
-
-# Installation
 
 ## 1. Docker
 
@@ -38,7 +38,7 @@ mkdir bitcoin-persistent-data
 4. Create the container and start it
 ```
 docker run -it \
- 	      --name segwit-uasf-bitcoin \
+ 	    --name segwit-uasf-bitcoin \
         --restart always \
         -p 8333:8333 \
         -v /home/${USER}/uasf-segwit-bitcoin-docker/bitcoin-persistent-data:/home/bitcoin \
@@ -51,6 +51,6 @@ To check if your port is open and your node is running, try this form:  https://
 6. Ensure that Docker is set to start automatically at boot.
 
 That's all,  
-Your bitcoin node should be online and start downloading the blockchain.
+Your bitcoin node should be online and start downloading the blockchain.  
 You've just done your part to protect Bitcoin and keep this world free !  
 Bitcoin belongs to the users !
