@@ -51,7 +51,7 @@ RUN apt-get install --yes libdb4.8-dev libdb4.8++-dev
 
 # Download the Segwit UASF Bitcoin source code from the githubbitcoin UASF repo
 RUN apt-get install --yes git
-RUN git clone https://github.com/UASF/bitcoin/ -b v0.14.0.uasfsegwit1.1
+RUN git clone https://github.com/UASF/bitcoin/ -b v0.14.0.uasfsegwit2
 
 # Install bitcoind
 WORKDIR /root/bitcoin
