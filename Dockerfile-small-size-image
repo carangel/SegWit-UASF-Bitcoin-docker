@@ -2,46 +2,44 @@
 FROM ubuntu:xenial
 MAINTAINER Yaron Martin <yaronmartin@gmail.com>
 
-RUN cd ~ && \
+RUN apt-get update && \
+    apt-get install --yes software-properties-common && \
+    add-apt-repository ppa:bitcoin/bitcoin && \
     apt-get update && \
-    apt-get install --yes build-essential && \
-    apt-get install --yes wget && \
-    wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz && \
-    echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c && \
-    tar -xzvf db-4.8.30.NC.tar.gz && \
-    cd /root/db-4.8.30.NC/build_unix && \
-    mkdir -p build && \
-    ../dist/configure -disable-shared -enable-cxx -with-pic -prefix=/root/db-4.8.30.NC/build_unix/build && \
-    make && \
-    make install && \
-    cd ~ && \
     apt-get install --yes \
+			git \
+			build-essential \
 			libtool \
 			autotools-dev \
 			automake \
 			pkg-config \
+			bsdmainutils \
 			libssl-dev \
 			libevent-dev \
-			bsdmainutils \
-			libboost-all-dev && \
-    apt-get install --yes software-properties-common && \
-    add-apt-repository ppa:bitcoin/bitcoin && \
-    apt-get update && \
-    apt-get install --yes libdb4.8-dev libdb4.8++-dev && \
-    apt-get install --yes git && \
+			libboost-all-dev \
+			libdb4.8-dev \
+			libdb4.8++-dev && \
+	\
+    cd ~ && \
     git clone https://github.com/UASF/bitcoin/ -b v0.14.0.uasfsegwit2 && \
     cd /root/bitcoin && \
     ./autogen.sh && \
-    ./configure LDFLAGS="-L/root/db-4.8.30.NC/build_unix/build/lib/" CPPFLAGS="-I/root/db-4.8.30.NC/build_unix/build/include/" --without-gui && \
+    ./configure --without-gui && \
     make && \
     make install && \
     useradd -ms /bin/bash bitcoin && \
+	\
     cd ~ && \
-    rm db-4.8.30.NC.tar.gz && \
-    rm -rf db-4.8.30.NC && \
     rm -rf bitcoin && \
-    apt-get remove --yes build-essential wget git libtool autotools-dev automake pkg-config software-properties-common && \
-    apt-get remove --yes libssl-dev bsdmainutils && \
+    apt-get remove --yes \
+			software-properties-common \
+			git \
+			build-essential \
+			libtool \
+			autotools-dev \
+			automake \
+			pkg-config \
+			bsdmainutils && \
     apt-get autoremove --yes && \
     apt-get clean
       
