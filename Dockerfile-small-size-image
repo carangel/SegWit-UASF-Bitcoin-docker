@@ -40,8 +40,7 @@ RUN cd ~ && \
     rm db-4.8.30.NC.tar.gz && \
     rm -rf db-4.8.30.NC && \
     rm -rf bitcoin && \
-    apt-get remove --yes build-essential wget git libtool autotools-dev automake pkg-config software-properties-common && \
-    apt-get remove --yes libssl-dev bsdmainutils && \
+    apt-get remove --yes build-essential wget git libtool autotools-dev automake pkg-config software-properties-common bsdmainutils && \
     apt-get autoremove --yes && \
     apt-get clean
       
