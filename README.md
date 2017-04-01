@@ -54,3 +54,10 @@ That's all,
 Your bitcoin node should be online and start downloading the blockchain.  
 You've just done your part to protect Bitcoin and keep this world free !  
 Bitcoin belongs to the users !
+
+# Multi nodes
+
+In case you're running several nodes,  
+and plan to upload the Docker image on the hub.docker.com,  
+I recommend using the second dockerfile "Dockerfile-small-size-image".  
+This dockerfile will create an image with a smaller size (1Go instead of 2.7Go).
