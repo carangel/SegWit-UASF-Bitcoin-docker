@@ -3,6 +3,7 @@ Install a SegWit UASF Bitcoin node on your machine using Docker
 # Installation
 
 ## 1. Docker
+
 You need Docker installed on your machine.  
 Follow this link if Docker is not installed yet:
 https://docs.docker.com/engine/installation/linux/
@@ -12,23 +13,27 @@ In the "Post-installation steps for Linux" page you need:
   *  "Configure Docker to start on boot"
 
 ## 2. Validate the UASF patch (optional)
+
 Optional but recommended if you have development skills.  
 You can check the patch at this page:  https://github.com/bitcoin/bitcoin/compare/0.14...UASF:0.14
 
 
 ## 3. Install Bitcoin
+
 1. Get this repository
+
 ```
 cd ~
 git clone https://github.com/carangel/uasf-segwit-bitcoin-docker.git
 cd uasf-segwit-bitcoin-docker
 ```
-2. Build the Docker image  
-For a regular node:
+2. Build the Docker image
+
+For a regular node run:
 ```
 docker build -t segwit-uasf-bitcoin .
 ```
-For a pruned node:
+For a pruned node run:
 ```
 docker build -t segwit-uasf-bitcoin -f Dockerfile-prune-mode .
 ```
