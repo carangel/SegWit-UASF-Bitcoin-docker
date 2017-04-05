@@ -20,6 +20,8 @@ You can check the patch at this page:  https://github.com/bitcoin/bitcoin/compar
 
 ## 3. Install Bitcoin
 
+**As a non-root user :**
+
 1. Get this repository
 
 ```
