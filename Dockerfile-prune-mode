@@ -1,0 +1,50 @@
+# Ubuntu 16.04 LTS (Xenial)
+FROM ubuntu:xenial
+MAINTAINER Yaron Martin <yaronmartin@gmail.com>
+
+RUN apt-get update && \
+    apt-get install --yes software-properties-common && \
+    add-apt-repository ppa:bitcoin/bitcoin && \
+    apt-get update && \
+    apt-get install --yes \
+			git \
+			build-essential \
+			libtool \
+			autotools-dev \
+			automake \
+			pkg-config \
+			bsdmainutils \
+			libssl-dev \
+			libevent-dev \
+			libboost-all-dev \
+			libdb4.8-dev \
+			libdb4.8++-dev && \
+	\
+    cd ~ && \
+    git clone https://github.com/UASF/bitcoin/ -b v0.14.0.uasfsegwit2 && \
+    cd /root/bitcoin && \
+    ./autogen.sh && \
+    ./configure --without-gui && \
+    make && \
+    make install && \
+    useradd -ms /bin/bash bitcoin && \
+	\
+    cd ~ && \
+    rm -rf bitcoin && \
+    apt-get remove --yes \
+			software-properties-common \
+			git \
+			build-essential \
+			libtool \
+			autotools-dev \
+			automake \
+			pkg-config \
+			bsdmainutils && \
+    apt-get autoremove --yes && \
+    apt-get clean
+      
+
+# START UASF SEGWIT BITCOIN !
+USER bitcoin
+WORKDIR /home/bitcoin
+CMD bitcoind -prune=550 -datadir=/home/bitcoin;
