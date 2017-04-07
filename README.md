@@ -15,7 +15,7 @@ In the "Post-installation steps for Linux" page you need:
 ## 2. Validate the UASF patch (optional)
 
 Optional but recommended if you have development skills.  
-You can check the patch at this page:  https://github.com/bitcoin/bitcoin/compare/0.14...UASF:0.14
+You can check the patch at this page:  https://github.com/bitcoin/bitcoin/compare/v0.14.1rc1...UASF:v0.14.0.uasfsegwit2
 
 
 ## 3. Install Bitcoin
