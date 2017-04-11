@@ -21,7 +21,7 @@ RUN apt-get update && \
 			libdb4.8++-dev && \
 	\
     cd ~ && \
-    git clone https://github.com/UASF/bitcoin/ -b v0.14.0.uasfsegwit2 && \
+    git clone https://github.com/UASF/bitcoin/ -b 0.14-BIP148 && \
     cd /root/bitcoin && \
     ./autogen.sh && \
     ./configure --without-gui && \
@@ -42,7 +42,7 @@ RUN apt-get update && \
 			bsdmainutils && \
     apt-get autoremove --yes && \
     apt-get clean
-      
+
 
 # START UASF SEGWIT BITCOIN !
 USER bitcoin

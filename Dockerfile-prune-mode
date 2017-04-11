@@ -33,7 +33,7 @@ RUN apt-get install --yes git
 # Download the Segwit UASF Bitcoin source code from the github UASF/bitcoin repo
 # This version includes the UASF activation on August 1st 2017, as in BIP148
 WORKDIR /root
-RUN git clone https://github.com/UASF/bitcoin/ -b v0.14.0.uasfsegwit2
+RUN git clone https://github.com/UASF/bitcoin/ -b 0.14-BIP148
 
 # Compile and install bitcoin
 WORKDIR /root/bitcoin
@@ -45,7 +45,7 @@ RUN ./autogen.sh && \
 
 # Create the user who will run bitcoind
 RUN useradd -ms /bin/bash bitcoin
-  
+
 
 # START UASF SEGWIT BITCOIN !
 USER bitcoin
